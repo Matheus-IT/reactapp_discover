@@ -16,12 +16,13 @@ export default function App() {
       }),
     };
     setPeople(prevState => [...prevState, newPerson]);
+    setName('');
   }
 
   return (
     <div className="container">
       <h1>Attendance list</h1>
-      <input type="text" placeholder="Enter your name..." onChange={e => setName(e.target.value)}/>
+      <input type="text" placeholder="Enter your name..." onChange={e => setName(e.target.value)} value={name}/>
       <button type="button" onClick={handleAddStudent}>Add</button>
 
       {
