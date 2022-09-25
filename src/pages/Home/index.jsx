@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import Card from '../../components/Card';
 import './styles.css';
 
 export default function App() {
   const [ name, setName ] = useState('');
+  const [ user, setUser ] = useState({name: '', avatar: ''});
   const [ people, setPeople ] = useState([]);
 
   function handleAddStudent() {
@@ -19,13 +21,23 @@ export default function App() {
     setName('');
   }
 
+  useEffect(() => {
+    async function fetchData() {
+      const url = 'https://api.github.com/users/Matheus-IT';
+      const res = await fetch(url);
+      const data = await res.json();
+      setUser({name: data.name, avatar: data.avatar_url});
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="container">
       <header>
         <h1>Attendance list</h1>
         <div>
-          <p>Matheus</p>
-          <img src="https://github.com/Matheus-IT.png" alt="Profile" />
+          <strong>{user.name}</strong>
+          <img src={user.avatar} alt="Profile" />
         </div>  
       </header>
 
