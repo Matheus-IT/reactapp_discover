@@ -21,7 +21,14 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>Attendance list</h1>
+      <header>
+        <h1>Attendance list</h1>
+        <div>
+          <p>Matheus</p>
+          <img src="https://github.com/Matheus-IT.png" alt="Profile" />
+        </div>  
+      </header>
+
       <input type="text" placeholder="Enter your name..." onChange={e => setName(e.target.value)} value={name}/>
       <button type="button" onClick={handleAddStudent}>Add</button>
 
