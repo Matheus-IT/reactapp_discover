@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Person } from '../../@types/person';
 import Card from '../../components/Card';
 import './styles.css';
 
 export default function App() {
   const [ name, setName ] = useState('');
   const [ user, setUser ] = useState({name: '', avatar: ''});
-  const [ people, setPeople ] = useState([]);
+  const [ people, setPeople ] = useState<Array<Person>>([]);
 
   function handleAddStudent() {
     const newPerson = {
