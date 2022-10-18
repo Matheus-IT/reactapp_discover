@@ -4,6 +4,13 @@ import { Person } from '../../@types/person';
 import Card from '../../components/Card';
 import './styles.css';
 
+
+type ProfileResponse = {
+  name: string;
+  avatar_url: string;
+}
+
+
 export default function App() {
   const [ name, setName ] = useState('');
   const [ user, setUser ] = useState({name: '', avatar: ''});
@@ -26,7 +33,7 @@ export default function App() {
     async function fetchData() {
       const url = 'https://api.github.com/users/Matheus-IT';
       const res = await fetch(url);
-      const data = await res.json();
+      const data = await res.json() as ProfileResponse;
       setUser({name: data.name, avatar: data.avatar_url});
     }
     fetchData();
